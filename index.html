@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crochetedly</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="icon"
+      href="Images/logo.jpg"
+    />
+    <style>
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f9f5f0;
+        color: #333;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .logo {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #e87a8d;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #e87a8d;
+      }
+
+      .icons {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .icons i {
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: #333;
+        transition: color 0.3s;
+      }
+
+      .icons i:hover {
+        color: #d4a373;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+        background-image: url("Images/front.jpeg");
+        background-size: cover;
+        background-position: center;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+      }
+
+      .hero-content {
+        width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        background-color: #e87a8d;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #c08a5c;
+      }
+
+      /* Featured Products */
+      .featured {
+        padding: 4rem 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+        color: #333;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 0.5rem;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: #e87a8d;
+      }
+      .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .product-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .product-img {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .product-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .product-card:hover .product-img img {
+        transform: scale(1.05);
+      }
+
+      .product-info {
+        padding: 1.5rem;
+      }
+
+      .product-info h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .product-info p {
+        color: #666;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .price span {
+        font-weight: 700;
+        color: #e87a8d;
+        font-size: 1.2rem;
+      }
+
+      .price i {
+        color: #e87a8d;
+        cursor: pointer;
+      }
+
+      .categories {
+        padding: 4rem 0;
+        background-color: #fff;
+      }
+
+      .category-list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+
+      .category-item {
+        text-align: center;
+        width: 150px;
+      }
+
+      .category-icon {
+        width: 80px;
+        height: 80px;
+        background-color: #f4d6e8;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        transition: background-color 0.3s;
+      }
+
+      .category-icon i {
+        font-size: 1.8rem;
+        color: #d4a373;
+      }
+
+      .category-item:hover .category-icon {
+        background-color: #d4a373;
+      }
+
+      .category-item:hover .category-icon i {
+        color: white;
+      }
+
+      .category-item h3 {
+        font-size: 1rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: white;
+        padding: 3rem 0 1rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      .footer-column h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: #d4a373;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-column ul li a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-column ul li a:hover {
+        color: #d4a373;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-links a {
+        color: white;
+        background-color: #444;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s;
+      }
+
+      .social-links a:hover {
+        background-color: #d4a373;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #444;
+        color: #ccc;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-links {
+          gap: 1rem;
+          font-size: large;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav-links {
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .hero {
+          height: 60vh;
+        }
+
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a href="#" class="logo">Crochetedly Crafts</a>
+          <div class="nav-links">
+            <a href="#">Home</a>
+            <a class="selected" href="Shop.html">Shop</a>
+            <a href="#">Categories</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+          </div>
+          <div class="icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-user"></i>
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Handmade with Love</h1>
+          <p>
+            Discover unique, handcrafted treasures that tell a story. Support
+            artisans and find one-of-a-kind pieces for your home and wardrobe.
+          </p>
+          <a href="#" class="btn">Shop Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+      <div class="container">
+        <div class="section-title">
+          <h2>Featured Products</h2>
+        </div>
+        <div class="products">
+          <!-- Product 1 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="Images/img1.jpg" alt="Crochet Bag" />
+            </div>
+            <div class="product-info">
+              <h3>Tulip flower</h3>
+              <p>
+                Handmade with organic cotton yarn, perfect as gifts to your
+                friends.
+              </p>
+              <div class="price">
+                <span>₱150</span>
+                <i class="fas fa-cart-plus"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="Images/img2.png" alt="Tulip keychain" />
+            </div>
+            <div class="product-info">
+              <h3>Crochet Sunflower</h3>
+              <p>Everlasting floral decor for your love ones as a gift.</p>
+              <div class="price">
+                <span>₱50</span>
+                <i class="fas fa-cart-plus"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="Images/img3.jpg" alt="Crochet Keychain" />
+            </div>
+            <div class="product-info">
+              <h3>Phone bag holder</h3>
+              <p>Basta lagayan ito</p>
+              <div class="price">
+                <span>₱100</span>
+                <i class="fas fa-cart-plus"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="Images/img4.jpg" alt="Crochet Blanket" />
+            </div>
+            <div class="product-info">
+              <h3>Halter top</h3>
+              <p>Warm and stylish handmade top.</p>
+              <div class="price">
+                <span>₱200</span>
+                <i class="fas fa-cart-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+      <div class="container">
+        <div class="section-title">
+          <h2>Shop by Category</h2>
+        </div>
+        <div class="category-list">
+          <div class="category-item">
+            <div class="category-icon">
+              <i class="fas fa-tshirt"></i>
+            </div>
+            <h3>Clothing</h3>
+          </div>
+          <div class="category-item">
+            <div class="category-icon">
+              <i class="fas fa-gem"></i>
+            </div>
+            <h3>Keychaisn</h3>
+          </div>
+          <div class="category-item">
+            <div class="category-icon">
+              <i class="fas fa-key"></i>
+            </div>
+            <h3>Home Decor</h3>
+          </div>
+          <div class="category-item">
+            <div class="category-icon"></div>
+            <h3>Keychains</h3>
+          </div>
+          <div class="category-item">
+            <div class="category-icon">
+              <i class="fas fa-paw"></i>
+            </div>
+            <h3>Toys</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Crochetedly Crafts</h3>
+            <p>
+              Your marketplace for unique handmade creations that support local
+              artisans and sustainable craftsmanship.
+            </p>
+            <div class="social-links">
+              <a href="https://web.facebook.com/profile.php?id=100092420513461"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Customer Service</h3>
+            <ul>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Returns & Exchanges</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt"></i> San Lorenzo Ruiz, Daet
+                Camarines Norte
+              </li>
+              <li><i class="fas fa-phone"></i> +63 912 345 6789</li>
+              <li><i class="fas fa-envelope"></i> @crochetedly.com</li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 Crochetedly. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Simple JavaScript for demonstration
+      document.addEventListener("DOMContentLoaded", function () {
+        // Cart functionality
+        const cartButtons = document.querySelectorAll(".fa-cart-plus");
+        cartButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const productName =
+              this.parentElement.parentElement.querySelector("h3").textContent;
+            const productPrice =
+              this.parentElement.querySelector("span").textContent;
+            alert(`Added to cart: ${productName} (${productPrice})`);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
